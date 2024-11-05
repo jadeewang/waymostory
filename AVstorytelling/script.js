@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           overlay2.style.display = 'block';
         };
       };
+      
   }
 
   document.getElementById('continueRideButton2').addEventListener('click', function() {

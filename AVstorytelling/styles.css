@@ -59,6 +59,11 @@ body {
   border-radius: 5px;
 }  
 
+p, p2 {
+  opacity: 1; /* Initially visible */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition */
+}
+
 p {
   color:rgb(185, 184, 184);
   text-align: left;
@@ -88,6 +93,7 @@ h2 {
   width: 50%;
   margin: auto;
   padding-top: 50px;
+  font-size: 35px;
 }
 img {
   object-fit: cover;
@@ -96,7 +102,7 @@ img {
 
 .popup-img {
   position: relative;
-  width: 70%;
+  width: 0%;
   height: auto;
   display: block;
   }
@@ -197,7 +203,7 @@ background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
 }
 
 .message-box {
-text-align: center;
+text-align: left;
 max-width: 100%;
 margin: 0 auto;
 padding: 20px;
@@ -214,105 +220,29 @@ font-size: 1.2rem;
   color: rgb(255, 255, 255);
   font-size: 1.2rem;
   }
-#startRideButton {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-background-color: #5DC4F1;
-color: white;
-cursor: pointer;
-font-size: 1rem;
-}
-#startRideButton:hover {
-background-color: #0056b3;
-}
-#yieldButton {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-background-color: #5DC4F1;
-color: white;
-cursor: pointer;
-font-size: 1rem;
-}
-#yieldButton:hover {
-background-color: #0056b3;
-}
-#keepDrivingButton {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-background-color: #5DC4F1;
-color: white;
-cursor: pointer;
-font-size: 1rem;
-}
-#keepDrivingButton:hover {
-background-color: #0056b3;
-}
-#continueRideButton {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-background-color: #5DC4F1;
-color: white;
-cursor: pointer;
-font-size: 1rem;
-}
-#continueRideButton:hover {
-background-color: #0056b3;
-}
-#nowButton {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-background-color: #5DC4F1;
-color: white;
-cursor: pointer;
-font-size: 1rem;
-}
-#nowButton:hover {
-background-color: #0056b3;
-}
-#waitButton {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-background-color: #5DC4F1;
-color: white;
-cursor: pointer;
-font-size: 1rem;
-}
-#waitButton:hover {
-background-color: #0056b3;
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Center align the button */
 }
 
-#continueRideButton2 {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-background-color: #5DC4F1;
-color: white;
-cursor: pointer;
-font-size: 1rem;
+#startRideButton, #yieldButton, #keepDrivingButton, #continueRideButton, #nowButton, #waitButton, #continueRideButton2, #endButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #5DC4F1;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Center align the button */
 }
 
-#continueRideButton2:hover {
-background-color: #0056b3;
-}
-
-#endButton {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-background-color: #5DC4F1;
-color: white;
-cursor: pointer;
-font-size: 1rem;
-}
-
-#endButton:hover {
-background-color: #0056b3;
+#startRideButton:hover, #yieldButton:hover, #keepDrivingButton:hover, #continueRideButton:hover, #nowButton:hover, #waitButton:hover, #continueRideButton2:hover, #endButton:hover {
+  background-color: #0056b3;
 }
 
 #road-img {
@@ -320,7 +250,6 @@ margin-left: auto;
 margin-right: auto;
 width: 50%;
 }
-
 .slideshow {
   position: relative;
   max-width: 600px; /* Adjust based on the maximum width you want */
@@ -342,30 +271,29 @@ width: 50%;
   vertical-align: middle;
   border-radius: 20px;
 }
+
 .pull-quote {
   transition: color 0.8s ease;
   transition: transform 0.8s;
 }
 
 .pull-quote:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
   color: #bcd8f6;
 }
 
 .pull-quote {
-  font-style: italic;
+  font-style: normal;
   font-size: 1.2em;
   font-family: Georgia, serif;
-  font-weight: semi-bold;
-  text-align: center;
+  font-weight: 500; /* Changed from bold to 600 to make the text a little less bold */
+  text-align: left;
   color: #f7f0f0;
   background-color: #00000000;
-  max-width: 70%;
+  max-width: 50%;
   position: sticky;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: 10px auto; /* Reduced spacing before/after the pull quotes */
+  padding: 15px; /* Reduced padding */
 }
 
 .image-container {

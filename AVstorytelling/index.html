@@ -21,7 +21,7 @@
           document.querySelector('Title.jpeg').style.opacity = 1;
         },1700);
       </script>
-      <h3 style="width: 100vw; font-size: 20px; text-align: center; font-weight: 100; margin-top: -15vh; font-family: Georgia, 'Times New Roman', Times, serif; color: gray;">by Attzy Rodriguez, Jade Wang, Kevin Zhang, & Leo Necheles
+      <h3 style="width: 100vw; font-size: 20px; text-align: center; font-weight: 100; margin-top: -15vh; font-family: Georgia, 'Times New Roman', Times, serif; color: gray;">JOUR390: Interactive Storytelling
     <style>
       h3 {
         opacity: 0.7;
@@ -145,7 +145,49 @@
       <img src="SS7.png" alt="Image 2">
     </a>
     <!-- Add more images as needed -->
-  </div>  
+  </div>   
+  <script src="script.js"></script>
+    <script>
+      let index = 0;
+      let accumulatedScroll = 0; // Variable to accumulate scroll amount
+      let scrollThreshold = 100; // Increase this number to make scroll less sensitive
+      let lastScrollTop = 0; // Track the last scroll position
+    
+      function showNextImage(direction) {
+        let slides = document.querySelectorAll('.slideshow a');
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = 'none'; // Use display none to hide non-active slides
+        }
+        // Calculate the next index. If direction is 'up', show the previous image
+        if (direction === 'up') {
+          index = index - 1 < 0 ? slides.length - 1 : index - 1;
+        } else {
+          index = (index + 1) % slides.length;
+        }
+        slides[index].style.display = 'block'; // Show the current slide
+      }
+    
+      window.addEventListener('scroll', function() {
+        let direction = 'down'; // Default direction
+        let st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st > lastScrollTop){
+          // Downscroll
+          direction = 'down';
+          accumulatedScroll += st - lastScrollTop; // Accumulate scroll down distance
+        } else {
+          // Upscroll
+          direction = 'up';
+          accumulatedScroll += lastScrollTop - st; // Accumulate scroll up distance
+        }
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    
+        // Check if accumulated scroll is greater than the threshold
+        if (accumulatedScroll > scrollThreshold) {
+          showNextImage(direction);
+          accumulatedScroll = 0; // Reset accumulated scroll
+        }
+      }, false);
+    </script>
    <p>
     But the criticism didn’t stop there. Critics also pointed to examples of self-driving cars <a href="https://www.wired.com/story/dashcam-footage-shows-driverless-cars-cruise-waymo-clogging-san-francisco/" target="_blank" style="color: lightblue;"">obstructing</a> emergency vehicles, city buses and general traffic as reasons for their frustrations.<br><br>
 
@@ -284,12 +326,14 @@
       No one is willing to give a definitive answer on where they see the industry in the near future. These companies are highly protective of where and when they plan to expand, but it’s also likely that no one really knows what is possible. <br><br>
 
       Some believe that the technology is not the concern, rather the perception of it is.<br>
+      <br>
+      "Technology will be good enough in five years to drive anywhere," Fu said.
     </p>
     
-    <message-container>
-      <blockquote class="pull-quote">
-        "Technology will be good enough in five years to drive anywhere," Fu said. "The social aspect is a much more challenging problem to solve."
-      </blockquote>
+    <message-container> 
+        <blockquote class="pull-quote">
+        "The social aspect is a much more challenging problem to solve."
+        </blockquote>
     </message-container>
 
     <p>
@@ -334,7 +378,7 @@
     
         
     <footer>
-      <p style="white-space: nowrap;">&copy; 2024 Created by Attzy Rodriguez, Jade Wang, Kevin Zhang, & Leo Necheles</p>
+      <p style="white-space: nowrap;"><i>&copy; 2024 Segal Design Immersion. Writing and reporting by Jade Wang.<br>Design and code by Attzy Rodriguez, Kevin Zhang, and Jade Wang.</i></p>
     <style>
         footer p {
             color: white;
@@ -349,17 +393,16 @@
       let lastScrollTop = 0; // Track the last scroll position
     
       function showNextImage(direction) {
-        let slides = document.querySelectorAll('.slideshow a');
-        for (let i = 0; i < slides.length; i++) {
-          slides[i].style.display = 'none'; // Use display none to hide non-active slides
-        }
+        let slides = document.querySelectorAll('.slideshow img');
+        slides.forEach(slide => slide.classList.remove('active')); // Remove active class from all slides
+    
         // Calculate the next index. If direction is 'up', show the previous image
         if (direction === 'up') {
           index = index - 1 < 0 ? slides.length - 1 : index - 1;
         } else {
           index = (index + 1) % slides.length;
         }
-        slides[index].style.display = 'block'; // Show the current slide
+        slides[index].classList.add('active'); // Add active class to the current slide
       }
     
       window.addEventListener('scroll', function() {
